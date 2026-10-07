@@ -1,11 +1,11 @@
 # Complete the null values from CAD. SI units; see docs/DYNAMICS.md.
 arm_length: 0.250
 arm_inertia: 0.0129095
-pendulum_mass: null
-pendulum_com: null
-pendulum_ixx: null
-pendulum_iyy: null
-pendulum_izz: null
+pendulum_mass: 2.5614
+pendulum_com: 0.0
+pendulum_ixx: 0.022798244
+pendulum_iyy: 0.021980206
+pendulum_izz: 0.0012927414
 arm_damping: 0.01
 pendulum_damping: 1.0e-03
 torque_constant: 2.0
