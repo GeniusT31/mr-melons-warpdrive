@@ -2,7 +2,7 @@
 arm_length: 0.250
 arm_inertia: 0.0129095
 pendulum_mass: 2.5614
-pendulum_com: 0.0
+pendulum_com: 0.125
 pendulum_ixx: 0.022798244
 pendulum_iyy: 0.021980206
 pendulum_izz: 0.0012927414
