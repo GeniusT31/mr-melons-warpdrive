@@ -25,7 +25,41 @@ def reward(state, normalized_action):
     normalized_action in [-1, 1]. Called every non-terminal step; failure already gives -10.
     Return a float. upright(state) is available for a balance bonus."""
     # TODO: Implement a reward function. 
-    return 0
+    theta, alpha, theta_dot, alpha_dot = np.asarray(state, dtype=float)
+
+    # Wrap pendulum angle so upright is always zero.
+    #alpha = np.arctan2(np.sin(alpha), np.cos(alpha))
+    '''action = float(np.asarray(normalized_action).item())
+    g = 9.81  # gravity
+    r = 0.125
+
+    reward =  -0.01* (g - (r * alpha_dot**2) / 2 - g * np.cos(alpha))**2
+    #reward -= 0.01 * alpha**2
+    #print(f"Reward1: {reward}")
+    reward += 0.001 * (-0.10 * theta**2 - 0.01 * theta_dot**2 - 0.01 * alpha_dot**2 - 0.01 * action**2)
+    reward += upright(state) * 0.5  # bonus for being upright'''
+    action = float(np.asarray(normalized_action).item())
+    height = 0.5 * (1.0 + np.cos(alpha))
+
+    # Encourage slowing down near upright, while allowing swing-up speed.
+    settled = np.exp(
+        -0.5 * ((theta_dot / 2.0)**2 + alpha_dot**2)
+    )
+    capture = height**8 * settled
+
+    return float(
+        height
+        + 2.0 * capture
+        + 1.0 * upright(state)
+        - 0.005 * action**2
+    )
+    #print(f"Reward2: {reward}")
+
+    '''if abs(alpha) < 3.14/2:
+        reward = 0.1 * alpha_dot ** 2
+    else:
+        reward = -0.1 * alpha ** 2'''
+    return reward
 
 def failure(state, p):
     return (not np.isfinite(state).all() or abs(state[2]) > p.arm_speed_limit
