@@ -17,13 +17,13 @@ class PolicyNode(Node):
         torch.set_num_threads(1)
 
         # TODO: Declare a node parameter 'model_file' that stores the path to the .zip policy saved in `runs/policy/`
-        path = None  # replace with your parameter
+        path = self.declare_parameter('model_file', './runs/dummy/policy.zip').value
 
         # TODO: Declare a node parameter 'parameters_file' that stores the .yaml file with the system parameters
         #       (for a trained policy, the reactor_params.yaml copy saved next to it in `runs/policy/`;
         #       for the dummy policy, your completed `config/reactor_params.yaml`, or the approximate
         #       `runs/dummy/reactor_params.yaml` before you have finished Part 1)
-        config = None  # replace with your parameter
+        config = self.declare_parameter('parameters_file', './config/reactor_params.yaml').value
         if path is None or config is None:
             raise NotImplementedError("Task 2.1: declare the 'model_file' and 'parameters_file' node parameters "
                                       "in PolicyNode.__init__ (see the TODOs in warpdrive/policy_node.py)")
@@ -40,11 +40,11 @@ class PolicyNode(Node):
 
         # TODO: Create a servo current publisher that publishes a message of type Float64 to '/reactor/current_cmd'
         #       Hint: Use a RELIABLE QoS publisher with "QoSProfile(depth=1)"; the simulator subscribes with the same QoS
-        self.publisher = None  # replace with your publisher
+        self.publisher = self.create_publisher(Float64, '/reactor/current_cmd', QoSProfile(depth=1))
 
         # TODO: Subscribe to the topic '/joint_states' with message type JointState and callback function self.on_state
         #       Hint: use a QoS compatible with the simulator's publisher (it publishes with QoSProfile(depth=1))
-        self.subscription = None  # replace with your subscription
+        self.subscription = self.create_subscription(JointState, '/joint_states', self.on_state, QoSProfile(depth=1))
 
         if self.publisher is None or self.subscription is None:
             raise NotImplementedError("Task 2.1: create the '/reactor/current_cmd' publisher and the '/joint_states' "
@@ -54,9 +54,9 @@ class PolicyNode(Node):
         """Publish one motor current command, in amperes."""
         # TODO: Create a Float64 message whose data is the current `value` in amperes, as a Python float,
         #       and publish it with the publisher you created in __init__
-        msg = None  # replace with your message
-        if msg is None:
-            raise NotImplementedError("Task 2.1: build and publish the Float64 message in PolicyNode.publish_current")
+        msg = Float64()  # replace with your message
+        msg.data = float(value)
+        self.publisher.publish(msg)
 
     # The callback function that runs anytime the node receives `joint_states` from the simulator node
     def on_state(self, msg):
@@ -65,19 +65,19 @@ class PolicyNode(Node):
         #       Hint: use the state_from_joint_state() helper function. It raises ValueError or IndexError
         #       if the message is incomplete or contains non-finite values. Call it inside a try/except
         #       block; in the except branch, publish zero current with self.publish_current(0.0) and return.
-        state = None  # replace with your state
+        state = state_from_joint_state(msg.name, msg.position, msg.velocity)  # replace with your state
 
         # TODO: Build the policy input. The policy expects exactly what FurutaEnv.step() returned
         #       during training, which is not the raw state. Check warpdrive/env.py to see how
         #       that input is built, and reuse the same helper instead of rebuilding it by hand.
-        obs = None  # replace with your policy input
+        obs = observation(state)  # replace with your policy input
 
         # TODO: Infer the normalized action by running policy.predict(..., deterministic=True)
         #       on the policy input from the previous step
-        action = None  # replace with your action
+        action, _ = self.policy.predict(obs, deterministic=True)  # replace with your action
 
         # TODO: Convert normalized action from the policy ([-1, 1]) to Amperes
-        current = None  # replace with your current
+        current = action_to_current(action, self.p)  # replace with your current
 
         missing = [name for name, value in (('state', state), ('obs', obs), ('action', action),
                                             ('current', current)) if value is None]
