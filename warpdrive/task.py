@@ -27,8 +27,6 @@ def reward(state, normalized_action):
     # TODO: Implement a reward function. 
     theta, alpha, theta_dot, alpha_dot = np.asarray(state, dtype=float)
 
-    # Wrap pendulum angle so upright is always zero.
-    #alpha = np.arctan2(np.sin(alpha), np.cos(alpha))
     action = float(np.asarray(normalized_action).item())
     g = 9.81  # gravity
     r = 0.125
@@ -39,27 +37,31 @@ def reward(state, normalized_action):
     reward += 0.001 * (-0.10 * theta**2 - 0.01 * theta_dot**2 - 0.1* alpha**2 - 0.01 * alpha_dot**2 - 0.01 * action**2)
     reward += upright(state) * 0.5  # bonus for being upright
 
-    '''action = float(np.asarray(normalized_action).item())
-    height = 0.5 * (1.0 + np.cos(alpha))
 
-    # Encourage slowing down near upright, while allowing swing-up speed.
-    settled = np.exp(
-        -0.5 * ((theta_dot / 2.0)**2 + alpha_dot**2)
-    )
-    capture = height**8 * settled
-
-    return float(
-        height
-        + 2.0 * capture
-        + 1.0 * upright(state)
-        - 0.005 * action**2
-    )'''
-    #print(f"Reward2: {reward}")
-
-    '''if abs(alpha) < 3.14/2:
+    '''
+    Initial idea: reward speed first, then reward no angle
+    if abs(alpha) < 3.14/2:
         reward = 0.1 * alpha_dot ** 2
     else:
         reward = -0.1 * alpha ** 2'''
+
+
+    '''
+    Second idea: use one reward function that rewards being upright and penalizes speed and angle deviation
+    theta_gain = 0.1
+    theta_dot_gain = 0.01
+    alpha_gain = 0.1
+    alpha_dot_gain = 0.01
+    action_gain = 0.01
+
+    reward = (-theta_gain * theta**2 
+    - theta_dot_gain * theta_dot**2 
+    - alpha_gain * alpha**2 
+    - alpha_dot_gain * alpha_dot**2 
+    - action_gain * action**2
+    ) + upright(state) * 0.5
+    '''
+
     return reward
 
 def failure(state, p):
