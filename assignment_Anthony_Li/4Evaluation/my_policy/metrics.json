@@ -1,0 +1,206 @@
+{
+  "episodes": [
+    {
+      "seed": 20000,
+      "success": true,
+      "return": 382.68745656936204,
+      "duration_s": 10.0,
+      "longest_hold_s": 8.5,
+      "first_three_second_hold_start_s": 1.5,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20001,
+      "success": true,
+      "return": 384.15919907221297,
+      "duration_s": 10.0,
+      "longest_hold_s": 7.18,
+      "first_three_second_hold_start_s": 2.82,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20002,
+      "success": true,
+      "return": 438.14511391388703,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20003,
+      "success": true,
+      "return": 434.45331033405466,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.42,
+      "first_three_second_hold_start_s": 0.58,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20004,
+      "success": true,
+      "return": 426.1257345342079,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.28,
+      "first_three_second_hold_start_s": 0.72,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20005,
+      "success": true,
+      "return": 437.1909429960202,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.46,
+      "first_three_second_hold_start_s": 0.54,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20006,
+      "success": true,
+      "return": 438.06937127320117,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20007,
+      "success": true,
+      "return": 437.64950668574915,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.46,
+      "first_three_second_hold_start_s": 0.54,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20008,
+      "success": true,
+      "return": 424.2256002433294,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.25,
+      "first_three_second_hold_start_s": 0.75,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20009,
+      "success": true,
+      "return": 436.16725514818154,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20010,
+      "success": true,
+      "return": 437.8423233372137,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20011,
+      "success": true,
+      "return": 437.4099930993949,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.46,
+      "first_three_second_hold_start_s": 0.54,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20012,
+      "success": true,
+      "return": 436.4805875918988,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20013,
+      "success": true,
+      "return": 414.9391855240097,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.08,
+      "first_three_second_hold_start_s": 0.92,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20014,
+      "success": true,
+      "return": 435.677511474564,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.44,
+      "first_three_second_hold_start_s": 0.56,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20015,
+      "success": true,
+      "return": 394.13353766183013,
+      "duration_s": 10.0,
+      "longest_hold_s": 7.25,
+      "first_three_second_hold_start_s": 2.75,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20016,
+      "success": true,
+      "return": 438.13979753623767,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20017,
+      "success": true,
+      "return": 423.6462337822029,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.24,
+      "first_three_second_hold_start_s": 0.76,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20018,
+      "success": true,
+      "return": 433.79340688191064,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.41,
+      "first_three_second_hold_start_s": 0.59,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    },
+    {
+      "seed": 20019,
+      "success": true,
+      "return": 436.3411201997868,
+      "duration_s": 10.0,
+      "longest_hold_s": 9.450000000000001,
+      "first_three_second_hold_start_s": 0.55,
+      "final_three_second_upright_fraction": 1.0,
+      "terminated": false
+    }
+  ],
+  "success_rate": 1.0,
+  "mean_return": 426.3638593929628
+}
