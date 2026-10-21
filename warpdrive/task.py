@@ -29,16 +29,17 @@ def reward(state, normalized_action):
 
     # Wrap pendulum angle so upright is always zero.
     #alpha = np.arctan2(np.sin(alpha), np.cos(alpha))
-    '''action = float(np.asarray(normalized_action).item())
+    action = float(np.asarray(normalized_action).item())
     g = 9.81  # gravity
     r = 0.125
 
     reward =  -0.01* (g - (r * alpha_dot**2) / 2 - g * np.cos(alpha))**2
     #reward -= 0.01 * alpha**2
     #print(f"Reward1: {reward}")
-    reward += 0.001 * (-0.10 * theta**2 - 0.01 * theta_dot**2 - 0.01 * alpha_dot**2 - 0.01 * action**2)
-    reward += upright(state) * 0.5  # bonus for being upright'''
-    action = float(np.asarray(normalized_action).item())
+    reward += 0.001 * (-0.10 * theta**2 - 0.01 * theta_dot**2 - 0.1* alpha**2 - 0.01 * alpha_dot**2 - 0.01 * action**2)
+    reward += upright(state) * 0.5  # bonus for being upright
+
+    '''action = float(np.asarray(normalized_action).item())
     height = 0.5 * (1.0 + np.cos(alpha))
 
     # Encourage slowing down near upright, while allowing swing-up speed.
@@ -52,7 +53,7 @@ def reward(state, normalized_action):
         + 2.0 * capture
         + 1.0 * upright(state)
         - 0.005 * action**2
-    )
+    )'''
     #print(f"Reward2: {reward}")
 
     '''if abs(alpha) < 3.14/2:
